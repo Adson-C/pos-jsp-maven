@@ -7,9 +7,17 @@
 	<title>ADS Jsp</title>
 </head>
 <body>
-	<h1>Inicio de um sonho!</h1>
+	<h1>Projeto JSP </h1>
 	
-	<% out.print("Seu sucesso garantido!"); %>
+	
+	<form action="receber-nome.jsp">
+	<input name="nome">
+	<input name="idade">
+	
+	
+	<input type="submit" value="Enviar">
+	
+	</form>
 	
 </body>
 </html>
