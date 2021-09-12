@@ -10,7 +10,7 @@
 	<h1>Projeto JSP </h1>
 	
 	
-	<form action="receber-nome.jsp">
+	<form action="ServletLogin" method="post">
 	<input name="nome">
 	<input name="idade">
 	
