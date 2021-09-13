@@ -1,23 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
-	<title>ADS Jsp</title>
+<meta charset="ISO-8859-1">
+<title>ADS Jsp</title>
 </head>
 <body>
-	<h1>Projeto JSP </h1>
-	
-	
+	<h1>Projeto JSP</h1>
+
+
 	<form action="ServletLogin" method="post">
-	<input name="nome">
-	<input name="idade">
-	
-	
-	<input type="submit" value="Enviar">
-	
+
+		<table>
+			<tr>
+				<td><label>Login</label> </td>
+				<td><input name="login" type="text"></td>
+
+			</tr>
+				
+			<tr>
+				<td><label>Senha</label></td>
+				<td><input name="senha" type="password"></td>
+
+			</tr>
+
+			<tr>
+			<td/>
+				<td><input type="submit" value="Enviar"></td>
+			</tr>
+
+		</table>
+
 	</form>
 	
+	<h4>${msg}</h4>
+
 </body>
 </html>
