@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Minha Tala Principal</title>
 </head>
 <body>
 <h1>Tela principal após o login</h1>
