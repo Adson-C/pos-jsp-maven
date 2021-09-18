@@ -16,7 +16,8 @@
 <style type="text/css">
 
 body {
-background-color: #CCB7AE;
+background-color: #F5F5DC;
+
 }
 
 form {
@@ -37,7 +38,7 @@ h4 {
 
 h5 {
 	position: absolute;
-	top: 80%;
+	top: 10%;
 	left: 33%;
 	font-size: 15px;
 	font-family: sans-serif;
@@ -49,6 +50,15 @@ h5 {
 .btn {
 box-shadow: 5px 10px 10px #000;
 }
+
+label {
+color: #556B2F;
+box-shadow: 1px 2px 2px #000;
+font-family: sans-serif;
+font-style: italic;
+}
+
+
 
 </style>
 
@@ -72,7 +82,7 @@ box-shadow: 5px 10px 10px #000;
     </div>
 		</div>	 
 		
-		<div class="col-md-6">
+		<div class="mb-3">
 			 <label class="form-label">Senha</label>
 			  <input class="form-control" name="senha" type="password" required="required"> 
 			  <div class="valid-feedback">
