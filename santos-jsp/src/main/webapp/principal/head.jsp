@@ -35,4 +35,13 @@
         <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
       <!-- Style.css -->
       <link rel="stylesheet" type="text/css" href="<%= request.getContextPath() %>/assets/css/style.css">
+      
+      
+      <style type="text/css">
+      .form-material .form-default.form-static-label .float-label {
+	color: #0400ff; 
+	}
+      
+      </style>
+      
   </head>
