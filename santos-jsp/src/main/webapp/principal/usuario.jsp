@@ -83,7 +83,8 @@
 			
 			<button type="button" class="btn btn-primary waves-effect waves-light" onclick="limparForm();" >Novo</button>
 			<button class="btn btn-success waves-effect waves-light">Salvar</button>
-			<button type="button" class="btn btn-danger waves-effect waves-light" onclick="criarDelete();">Excluir</button>
+			<button type="button" class="btn btn-danger waves-effect waves-light" onclick="deleteAjax();">Excluir</button>
+			<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#examploModalUsuario">Pesquisar</button>
 
 					</form>
 
@@ -94,7 +95,7 @@
 		</div>
 	</div>
 	
-	<span>${msg}</span>
+	<span id="msg">${msg}</span>
 
 </div>
 <!-- Page-body end -->
@@ -110,11 +111,96 @@
 
 <jsp:include page="javascriptfile.jsp"></jsp:include>
 
+<!-- Modal -->
+<div class="modal fade" id="examploModalUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Pesquisa de Usuário</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+     </div>
+      <div class="modal-body">
+        
+        <div class="input-group mb-3">
+			<input type="text" class="form-control" placeholder="Nome" aria-label="nome" id="nomeBuscar" aria-describedby="basic-addon2">
+			<div class="input-group-append">
+			  <button class="btn btn-outline-success" type="button" onclick="buscarUsuario();">Buscar</button>
+		</div>
+	</div>
+	
+	<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Ver</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+  </tbody>
+</table>
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
+
+function buscarUsuario() {
+	var nomeBuscar = document.getElementById('nomeBuscar').value;
+	
+	if(nomeBuscar != null && nomeBuscar != '' && nomeBuscar.trim() != '') { // validando que tem ter valor pra buscar no banco
+		alert(nomeBuscar);
+	}
+	
+}
+
+
+function deleteAjax() {
+	
+	if (confirm('Certerza que deseja excluir os dados?')) {
+		
+		var urlAction = document.getElementById('formUser').action;
+		var idUser = document.getElementById('id').value;
+		
+		$.ajax({
+			method: "get", 
+			url : urlAction,
+			data : "id=" + idUser + "&acao=deletarajax",
+			success : function (response) {
+				
+				limparForm();
+				document.getElementById('msg').textContent = response;
+			}
+			
+		}).fail(function(xhr, status, errorThrown) {
+			alert('Error ao deletar usuário por id: ' + xhr.reponseText);
+		});
+		
+	}
+	
+}
+
+
+
+
 function criarDelete() {
+	
+	if (confirm('Tem certerza que deseja excluir os dados?')) {
+		
 	document.getElementById("formUser").method = 'get';
 	document.getElementById("acao").value = 'deletar';
 	document.getElementById("formUser").submit();
+		
+	}
+	
 }
 
 
