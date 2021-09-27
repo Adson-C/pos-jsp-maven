@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	
+	<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+	
+	
 
 <!DOCTYPE html>
 <html lang="en">
@@ -96,7 +100,31 @@
 	</div>
 	
 	<span id="msg">${msg}</span>
-
+	
+	<div style="height: 300px; overflow: scroll;">
+	<table class="table" id="tabelaresultadosview">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Ver</th>
+    </tr>
+  </thead>
+  <tbody>
+  <c:forEach items="${modelLogins}" var="ml">
+	<tr>
+	<td><c:out value="${ ml.id}"></c:out></td>
+	<td><c:out value="${ ml.nome}"></c:out></td>
+	<td><a class="btn btn-info" href="<%= request.getContextPath() %>/ServletUsuarioController?acao=buscarEditar&id=${ml.id }">Ver</a></td>
+	</tr>
+	
+  </c:forEach>
+  			
+  </tbody>
+</table>
+  
+</div>
+    
 </div>
 <!-- Page-body end -->
 </div>
@@ -130,7 +158,8 @@
 		</div>
 	</div>
 	
-	<table class="table">
+	<div style="height: 300px; overflow: scroll;">
+	<table class="table" id="tabelaresultados">
   <thead>
     <tr>
       <th scope="col">ID</th>
@@ -142,6 +171,9 @@
     
   </tbody>
 </table>
+</div>
+
+<span id="totalResultado" style="color: blue;"></span>
           
       </div>
       <div class="modal-footer">
@@ -153,11 +185,44 @@
 
 <script type="text/javascript">
 
+function verEditar(id) {
+	var urlAction = document.getElementById('formUser').action;
+	
+	window.location.href = urlAction + '?acao=buscarEditar&id='+id;
+	
+}
+
 function buscarUsuario() {
 	var nomeBuscar = document.getElementById('nomeBuscar').value;
 	
 	if(nomeBuscar != null && nomeBuscar != '' && nomeBuscar.trim() != '') { // validando que tem ter valor pra buscar no banco
-		alert(nomeBuscar);
+		
+		var urlAction = document.getElementById('formUser').action;
+		
+		$.ajax({
+			
+		method: "get",
+		url: urlAction,
+		data: "nomeBuscar=" + nomeBuscar + '&acao=buscarUserAjax',
+		success: function (response) {
+			
+			var json = JSON.parse(response);
+			
+			$('#tabelaresultados > tbody > tr').remove();
+			
+			for (var p =0; p <json.length; p++) {
+				$('#tabelaresultados > tbody').append('<tr> <td>'+json[p].id+'</td><td>'+json[p].nome+' </td> <td><button onclick="verEditar('+json[p].id+');" type="button" class="btn btn-info">Ver</button></td> </tr>');
+			}
+			
+			document.getElementById('totalResultado').textContent = 'Resultados: ' + json.length;
+		}
+			
+		}).fail(function (xhr, status, errorThrown) {
+			alert('Erro ao buscar usuário por nome' + xhr.responseText);
+		});
+			
+	
+		
 	}
 	
 }
