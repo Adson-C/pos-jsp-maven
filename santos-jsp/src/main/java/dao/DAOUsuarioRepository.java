@@ -22,7 +22,7 @@ public class DAOUsuarioRepository {
 		if (obj.isNovo()) { // Grava um novo
 			
 
-		String sql = "INSERT INTO model_login(login, senha, nome, email, usuario_id) VALUES (?, ?, ?, ?, ?);";
+		String sql = "INSERT INTO model_login(login, senha, nome, email, usuario_id, perfil) VALUES (?, ?, ?, ?, ?, ?);";
 		
 		PreparedStatement pdSql = connection.prepareStatement(sql);
 		
@@ -31,6 +31,7 @@ public class DAOUsuarioRepository {
 		pdSql.setString(3, obj.getNome());
 		pdSql.setString(4, obj.getEmail());
 		pdSql.setLong(5, userLogado);
+		pdSql.setString(6, obj.getPerfil());
 		
 		pdSql.execute();
 		
@@ -38,13 +39,14 @@ public class DAOUsuarioRepository {
 		
 		} 
 		else {
-			String sql = "UPDATE model_login SET login=?, senha=?, nome=?, email=? WHERE id = "+obj.getId()+";";
+			String sql = "UPDATE model_login SET login=?, senha=?, nome=?, email=?, perfil=? WHERE id = "+obj.getId()+";";
 			PreparedStatement pdSql = connection.prepareStatement(sql);
 			
 			pdSql.setString(1, obj.getLogin());
 			pdSql.setString(2, obj.getSenha());
 			pdSql.setString(3, obj.getNome());
 			pdSql.setString(4, obj.getEmail());
+			pdSql.setString(5, obj.getPerfil());
 	
 			
 			pdSql.executeUpdate();
@@ -129,6 +131,7 @@ public ModelLogin consultarUsuarioLogado(String login) throws Exception  {
 			modelLogin.setSenha(resultado.getString("senha"));
 			modelLogin.setNome(resultado.getString("nome"));
 			modelLogin.setUseradmin(resultado.getBoolean("useradmin"));
+			modelLogin.setPerfil(resultado.getString("perfil"));
 			
 		}
 		return modelLogin;

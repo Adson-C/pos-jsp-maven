@@ -3,7 +3,6 @@
 	
 	<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 	
-	
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,6 +67,22 @@
 			<input type="email" name="email" id="email" class="form-control" required="required" autocomplete="off" value="${modelLogin.email }"> 
 				<span class="form-bar"></span> 
 				<label class="float-label">E-mail:</label>
+		</div>
+		
+		
+		<div class="form-group form-default form-static-label">
+		<select class="form-control" 
+		aria-label="Default select example" name="perfil">
+		
+			  <option disabled="disabled">[Selecione o Perfil]</option>
+			  <option value="ADMIN">Admin</option>
+			  <option value="SECRETARIA">Secretária</option>
+			  <option value="AUXILIAR">Auxiliar</option>
+			  
+		</select>
+		<span class="form-bar"></span> 
+				<label class="float-label">Perfil:</label>
+		
 		</div>
 		
 		<div class="form-group form-default form-static-label">
