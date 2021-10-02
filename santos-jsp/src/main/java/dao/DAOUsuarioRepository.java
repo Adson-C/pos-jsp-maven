@@ -77,6 +77,7 @@ public List<ModelLogin> consultarUsuarioList(Long userLogado) throws Exception {
 			modelLogin.setId(resultado.getLong("id"));
 			modelLogin.setLogin(resultado.getString("login"));
 			modelLogin.setNome(resultado.getString("nome"));
+			modelLogin.setPerfil(resultado.getString("perfil"));
 			
 			retorno.add(modelLogin);
 			
@@ -105,6 +106,7 @@ public List<ModelLogin> consultarUsuarioList(Long userLogado) throws Exception {
 			modelLogin.setId(resultado.getLong("id"));
 			modelLogin.setLogin(resultado.getString("login"));
 			modelLogin.setNome(resultado.getString("nome"));
+			modelLogin.setPerfil(resultado.getString("perfil"));
 			
 			retorno.add(modelLogin);
 			
@@ -203,6 +205,7 @@ public ModelLogin consultarUsuarioID(String id, Long userLogado) throws Exceptio
 			modelLogin.setLogin(resultado.getString("login"));
 			modelLogin.setSenha(resultado.getString("senha"));
 			modelLogin.setNome(resultado.getString("nome"));
+			modelLogin.setPerfil(resultado.getString("perfil"));
 			
 		}
 		return modelLogin;
