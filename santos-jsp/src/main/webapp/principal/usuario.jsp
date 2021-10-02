@@ -83,11 +83,11 @@
 			  
 			  if (modelLogin != null && modelLogin.getPerfil().equals("ADMIN")) {
 					  out.print(" ");
-					  
 					  out.print("selected=\"selected\"");
 					  out.print(" ");
+					  
+			  } %> >Admin</option>
 				  
-			  } %>>Admin</option>
 			  
 			  <option value="SECRETARIA" <% 
 			  
@@ -99,7 +99,7 @@
 					  out.print("selected=\"selected\"");
 					  out.print(" ");
 					  
-			  } %>>>Secretária</option>
+			  } %> >Secretária</option>
 			  
 			  <option value="AUXILIAR" <% 
 			  
@@ -112,7 +112,7 @@
 					  out.print("selected=\"selected\"");
 					  out.print(" ");
 					  
-			  } %>>>Auxiliar</option>
+			  } %> >Auxiliar</option>
 			  
 		</select>
 		<span class="form-bar"></span> 
@@ -132,6 +132,35 @@
 			<input type="password" name="senha" id="senha" class="form-control" required="required" autocomplete="off" value="${modelLogin.senha }">
 				 <span class="form-bar"></span> 
 				<label class="float-label">Senha:</label>
+				
+			</div>
+			
+			
+			<div class="form-group form-default form-static-label">
+				<input type="radio" name="sexo"  value="MASCULINO" <% 
+				
+						modelLogin = (ModelLogin) request.getAttribute("modelLogin");
+				
+				if (modelLogin != null && modelLogin.getSexo().equals("MASCULINO")) {
+					  out.print(" ");
+					  
+					  out.print("checked=\"checked\"");
+					  out.print(" ");
+					  
+			  } %> >Masculino</>
+				
+				
+				<input type="radio" name="sexo" value="FEMININO" <% 
+				
+						modelLogin = (ModelLogin) request.getAttribute("modelLogin");
+				
+				if (modelLogin != null && modelLogin.getSexo().equals("FEMININO")) {
+					  out.print(" ");
+					  
+					  out.print("checked=\"checked\"");
+					  out.print(" ");
+					  
+			  } %> >Feminino</> 
 				
 			</div>
 			
