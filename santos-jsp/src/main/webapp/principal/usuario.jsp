@@ -49,15 +49,35 @@
 <div class="card-block">
 	<h4 class="sub-title">Cad. Usuário</h4>
 
-	<form class="form-material" action="<%= request.getContextPath() %>/ServletUsuarioController" method="post" id="formUser" >
+	<form class="form-material" enctype="multipart/form-data" action="<%= request.getContextPath() %>/ServletUsuarioController" method="post" id="formUser" >
 	
 	<input type="hidden" name="acao" id="acao" value=""> 
 	
 		<div class="form-group form-default form-static-label">
-			<input type="text" name="id" id="id" class="form-control" readonly="readonly" value="${modelLogin.id}"> 
+			<input type="text" name="id" id="id" class="form-control" readonly="readonly" value="${modelLogin.id}">
 				<span class="form-bar"></span>
 				 <label class="float-label">ID:</label>
 		</div>
+		
+		<div class="form-group form-default input-group mb-4">
+			<div class="input-group-prepend">
+			
+			<c:if test="${modelLogin.fotoUser != '' && modelLogin.fotoUser != null}">
+			 <a href="<%= request.getContextPath() %>/ServletUsuarioController?acao=downLoadFoto&id=${modelLogin.id}" >
+			<img alt="Imagem User" id="fotoEmBase64" src="${modelLogin.fotoUser}" width="70px">
+			</a>
+			</c:if>
+			
+			<c:if test="${modelLogin.fotoUser == '' || modelLogin.fotoUser == null}">
+				<img alt="Imagem User" id="fotoEmBase64" src="assets/images/homen_E_mulher.jpg" width="70px">
+			</c:if>
+			
+			</div>
+			
+			<input type="file" id="fileFoto" name="fileFoto" accept="image/*" onchange="visualizarImg('fotoEmBase64', 'fileFoto');" class="form-control-file" style="margin-top: 15px; margin-left: 5px;">
+		
+		</div>
+		
 		<div class="form-group form-default form-static-label">
 			<input type="text" name="nome" id="nome" class="form-control" required="required" value="${modelLogin.nome}"> 
 				<span class="form-bar"></span> 
@@ -263,6 +283,25 @@
 </div>
 
 <script type="text/javascript">
+
+
+function visualizarImg(fotoEmBase64, filefoto) {
+	
+	var preview = document.getElementById(fotoEmBase64); /*Campo IMG html*/
+	var fileUser = document.getElementById(filefoto).files[0];
+	var reader = new FileReader();
+	
+	reader.onloadend = function () {
+		preview.src = reader.result; /*Carreaga a foto na tela*/
+	};
+	if (fileUser) {
+		reader.readAsDataURL(fileUser); /*Priview da Image*/
+	}else {
+		priview.src= '';
+	}
+}
+
+
 
 function verEditar(id) {
 	var urlAction = document.getElementById('formUser').action;
