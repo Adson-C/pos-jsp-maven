@@ -39,7 +39,7 @@
       
       <style type="text/css">
       .form-material .form-default.form-static-label .float-label {
-	color: #0400ff; 
+	color: #3582c4;
 	}
       
       </style>
