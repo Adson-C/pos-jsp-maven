@@ -7,8 +7,8 @@
                               <div class="row align-items-center">
                                   <div class="col-md-8">
                                       <div class="page-header-title">
-                                          <h5 class="m-b-10">Dashboard</h5>
-                                          <p class="m-b-0">Welcome to Mega Able</p>
+                                          <h5 class="m-b-10">Projeto Java Adson Santos</h5>
+                                          <p class="m-b-0">Seja Bem-Vindo!</p>
                                       </div>
                                   </div>
                                   <div class="col-md-4">
@@ -16,7 +16,7 @@
                                           <li class="breadcrumb-item">
                                               <a href="index.html"> <i class="fa fa-home"></i> </a>
                                           </li>
-                                          <li class="breadcrumb-item"><a href="#!">Dashboard</a>
+                                          <li class="breadcrumb-item"><a href="#!">Projeto Java EE</a>
                                           </li>
                                       </ul>
                                   </div>
