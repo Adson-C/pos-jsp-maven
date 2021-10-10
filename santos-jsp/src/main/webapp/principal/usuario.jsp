@@ -83,6 +83,12 @@
 				<span class="form-bar"></span> 
 				<label class="float-label">Nome:</label>
 		</div>
+		
+		<div class="form-group form-default form-static-label">
+			<input type="text" name="dataNascimento" id="dataNascimento" class="form-control" required="required" value="${modelLogin.dataNascimento}"> 
+				<span class="form-bar"></span> 
+				<label class="float-label">Data Nascimento:</label>
+		</div>
 
 		<div class="form-group form-default form-static-label">
 			<input type="email" name="email" id="email" class="form-control" required="required" autocomplete="off" value="${modelLogin.email }"> 
@@ -357,6 +363,23 @@
 </div>
 
 <script type="text/javascript">
+
+$(function() {
+	
+	$("#dataNascimento").datepicker({
+	
+		dateFormat: 'dd/mm/yy',
+		dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+		dayNamesMin: ['D','S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+		dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua','Qui', 'Sex', 'Sab', 'Dom' ],
+		monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+		monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+		nextText: 'Próximo',
+		prevtext: 'Anterior'
+		
+	});
+	
+});
 
 
 $("#numero").keypress(function(event) {
