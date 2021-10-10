@@ -27,6 +27,8 @@ public class DAOTelefoneRepository {
 		String sql = "select * from telefone where usuario_pai_id = ?";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		
+		preparedStatement.setLong(1, idUserPai);
+		
 		ResultSet rs = preparedStatement.executeQuery();
 		
 		while (rs.next()) {
@@ -47,13 +49,13 @@ public class DAOTelefoneRepository {
 	
 	public void  gravarTelefone(ModelTelefone modelTelefone) throws Exception {
 		
-		String sql = "insert into telefone (numero, usuario_pai_id, usuario_cad_id) values(?, ?, ?)";
+		String sql = "insert into telefone (numero, usuario_pai_id, usuario_cad_id) values (?, ?, ?)";
 		
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		
 		preparedStatement.setString(1, modelTelefone.getNumero());
 		preparedStatement.setLong(2, modelTelefone.getUsuario_pai_id().getId());
-		preparedStatement.setLong(2, modelTelefone.getUsuario_cad_id().getId());
+		preparedStatement.setLong(3, modelTelefone.getUsuario_cad_id().getId());
 		
 		preparedStatement.execute();
 		
