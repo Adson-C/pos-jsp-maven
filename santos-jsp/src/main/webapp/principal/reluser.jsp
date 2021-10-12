@@ -73,6 +73,30 @@
 									
 														</form>
 
+														<div style="height: 300px; overflow: scroll;">
+															<table class="table" id="tabelaresultadosview">
+																<thead>
+																	<tr>
+																		<th scope="col">ID</th>
+																		<th scope="col">Nome</th>
+																		
+																	</tr>
+																</thead>
+																<tbody>
+																	<c:forEach items="${listarUser}" var="ml">
+																		<tr>
+																			<td><c:out value="${ ml.id}"></c:out></td>
+																			<td><c:out value="${ ml.nome}"></c:out></td>
+																			
+																		</tr>
+
+																	</c:forEach>
+
+																</tbody>
+															</table>
+
+														</div>
+
 													</div>
 												</div>
 											</div>
