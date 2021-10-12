@@ -5,7 +5,6 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import org.apache.jasper.tagplugins.jstl.core.If;
 import org.apache.tomcat.jakartaee.commons.compress.utils.IOUtils;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
@@ -158,6 +157,11 @@ public class ServletUsuarioController extends ServletGenericUtil {
 						&& dataFinal == null || dataFinal.isEmpty()) {
 					
 					request.setAttribute("listarUser", daoUsuarioRepository.consultarUsuarioListRelatorio(super.getUserLogado(request)));
+				}
+				else {
+					request.setAttribute("listarUser", daoUsuarioRepository
+							.consultarUsuarioListRelatorio(super.getUserLogado(request), dataInicial, dataFinal));
+					
 				}
 				
 				
