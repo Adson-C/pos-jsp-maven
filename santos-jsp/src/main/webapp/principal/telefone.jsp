@@ -43,7 +43,7 @@
 												<!-- Basic Form Inputs card start -->
 												<div class="card">
 
-													<div class="card-block"></div>
+													<div class="card-block">
 													<h4 class="sub-title" style="font: sans-serif; color: blue;">Cad. Telefone</h4>
 
 													<form class="form-material" action="<%=request.getContextPath()%>/ServletTelefone" method="post" id="formFone" >
@@ -55,7 +55,9 @@
 															<span class="form-bar"></span>
 															<label class="float-label">ID:</label>
 															
-														</div>
+															</div>
+															
+														
 															
 															<div class="form-group form-default form-static-label">
 																<input readonly="readonly" type="text" name="nome" id="nome" class="form-control" required="required" value="${modelLogin.nome}"> 
@@ -73,6 +75,8 @@
 														<button class="btn btn-success waves-effect waves-light">Salvar</button>
 															
 													</form>
+													
+													</div>
 
 												</div>
 											</div>

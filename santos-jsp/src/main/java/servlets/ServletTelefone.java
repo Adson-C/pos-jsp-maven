@@ -103,15 +103,15 @@ public class ServletTelefone extends ServletGenericUtil {
 				request.setAttribute("msg", "Telefone ja Existe!");
 			}
 			
-			List<ModelTelefone> modelTelefones = daoTelefoneRepository.listFone(Long.parseLong(usuario_pai_id));
-			
-			ModelLogin modelLogin = daoUsuarioRepository.consultaUsuarioID(Long.parseLong(usuario_pai_id));
-			
-			request.setAttribute("modelLogin", modelLogin);
-			
-			request.setAttribute("modelTelefones", modelTelefones);
-			
-			request.getRequestDispatcher("principal/telefone.jsp").forward(request, response);
+				List<ModelTelefone> modelTelefones = daoTelefoneRepository.listFone(Long.parseLong(usuario_pai_id));
+				
+				ModelLogin modelLogin = daoUsuarioRepository.consultaUsuarioID(Long.parseLong(usuario_pai_id));
+				
+				request.setAttribute("modelLogin", modelLogin);
+				
+				request.setAttribute("modelTelefones", modelTelefones);
+				
+				request.getRequestDispatcher("principal/telefone.jsp").forward(request, response);
 		
 			
 		} catch (Exception e) {
