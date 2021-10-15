@@ -181,6 +181,7 @@ public List<ModelLogin> consultarUsuarioListRelatorio(Long userLogado) throws Ex
 		modelLogin.setNome(resultado.getString("nome"));
 		modelLogin.setPerfil(resultado.getString("perfil"));
 		modelLogin.setSexo(resultado.getString("sexo"));
+		modelLogin.setDataNascimento(resultado.getDate("datanascimento"));
 		
 		modelLogin.setTelefones(this.listFone(modelLogin.getId()));
 		
@@ -213,6 +214,7 @@ public List<ModelLogin> consultarUsuarioListRelatorio(Long userLogado, String da
 		modelLogin.setNome(resultado.getString("nome"));
 		modelLogin.setPerfil(resultado.getString("perfil"));
 		modelLogin.setSexo(resultado.getString("sexo"));
+		modelLogin.setDataNascimento(resultado.getDate("datanascimento"));
 		
 		modelLogin.setTelefones(this.listFone(modelLogin.getId()));
 		
