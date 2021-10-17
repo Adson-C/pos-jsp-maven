@@ -109,6 +109,10 @@ class="btn btn-primary">Gerar Gráfico</button>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <script type="text/javascript">
+    
+    
+    var myChart = new Chart(document.getElementById('myChart'));
+    
         	
     
     function gerarGrafico() {
@@ -125,7 +129,9 @@ class="btn btn-primary">Gerar Gráfico</button>
 				
 				var json = JSON.parse(response);
 				
-				var myChart = new Chart(
+				myChart.destroy();
+				
+				myChart = new Chart(
 		        	    document.getElementById('myChart'),
 		        	    {
 		      			  type: 'line',
